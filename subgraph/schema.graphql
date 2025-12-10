@@ -1,0 +1,19 @@
+type Course @entity {
+  id: ID!
+  title: String!
+  ipfsCID: String!
+  timestamp: BigInt!
+}
+
+type Agent @entity {
+  wallet: ID!
+  name: String!
+  verified: Boolean!
+}
+
+type Tree @entity {
+  id: ID!
+  ipfsCID: String!
+  timestamp: BigInt!
+  plantedBy: String!
+}
