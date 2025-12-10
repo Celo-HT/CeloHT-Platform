@@ -1,0 +1,9 @@
+const IPFS = require('ipfs-http-client');
+const ipfs = IPFS.create({ url: 'http://localhost:5001' });
+
+describe("IPFS Upload", () => {
+  it("should upload a file", async () => {
+    const { cid } = await ipfs.add('Test content for CeloHT');
+    expect(cid).toBeDefined();
+  });
+});
