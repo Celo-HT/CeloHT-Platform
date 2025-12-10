@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  api:
+    build: ../api
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+
+  subgraph:
+    image: graphprotocol/graph-node
+    ports:
+      - "8000:8000"
+    environment:
+      - postgres_url=postgres://graph:password@postgres:5432/graph
+      - ipfs=http://ipfs:5001
+
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: graph
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: graph
+
+  ipfs:
+    image: ipfs/go-ipfs:latest
+    ports:
+      - "5001:5001"
+      - "4001:4001"
